@@ -23,6 +23,7 @@ faces = face_cascade.detectMultiScale(gray,scaleFactor=1.10,minNeighbors=5)
 if len(faces)>0:
     for x,y,w,h in faces:
         cv2.rectangle(image, (x,y), (x+w, y+h), (0, 255, 0),3)
+	# creating the rectangle object from the outputs of haar cascade calssifier
         drect = dlib.rectangle(int(x),int(y),int(x+w),int(y+h))
         landmarks = predictor(gray, drect)
         points = shape_to_np(landmarks)
